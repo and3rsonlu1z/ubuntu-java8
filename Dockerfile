@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:16.04
 MAINTAINER anderson@infraops.info
 
 # envs for maintaining java updates
@@ -44,8 +44,7 @@ RUN cd /usr/local/bin \
     | grep -E 'browser_.*amd64' | cut -d\" -f4) | tar xzv \
   && chmod +x dockerize
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get purge -y curl ca-certificates \
-  && apt-get autoremove -y \
+RUN DEBIAN_FRONTEND=noninteractive apt-get autoremove -y \
   && rm -rf /var/lib/apt/lists/* \
   && rm -rf /var/log/*
 
